@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+ 
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #007BFF;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+ 
+/* Paragraphs */
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+ 
+/* Links */
+a {
+  color: #007BFF;
+  text-decoration: none;
+}
+ 
+a:hover {
+  text-decoration: underline;
+}
+ 
+/* Buttons */
+button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+ 
+button:hover {
+  background-color: #0056b3;
+}
+ 
+/* Inputs */
+input, textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+ 
+/* Container */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+ 
+/* Lists */
+ul, ol {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+ 
+/* Table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+ 
+table, th, td {
+  border: 1px solid #ddd;
+}
+ 
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+ 
+/* Simple card style */
+.card {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
