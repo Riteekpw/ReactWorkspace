@@ -25,11 +25,12 @@ const Books = () => {
   }, []);
  
   return (
+    <>
+    <div>
+        <Slideshow/>
+    </div>
     
     <div className="container">
-      {/* <div>
-        <Slideshow/>
-      </div> */}
       <h1 className="text-2xl font-bold mb-4">Available Books</h1>
       {loading && <p className="text-center text-gray-500">Loading books...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}
@@ -39,6 +40,8 @@ const Books = () => {
         ))}
       </div>
     </div>
+    </>
+    
   );
 };
  

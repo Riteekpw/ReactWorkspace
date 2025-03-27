@@ -30,20 +30,6 @@ const Members = () => {
       .catch(error => console.error(error));
   };
 
-  const deleteMember = () => {
-    if (!deleteBookId) {
-      alert("Please select a book to delete.");
-      return;
-    }
-
-    axios.delete(`https://localhost:7247//delete/${deleteBookId}`)
-      .then(() => {
-        alert("Book deleted successfully!");
-        setBooks(books.filter(book => book.bookId !== parseInt(deleteBookId)));
-        setDeleteBookId("");
-      })
-      .catch(error => console.error(error));
-  };
 
 
   return (

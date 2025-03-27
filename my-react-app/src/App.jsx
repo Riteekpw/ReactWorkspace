@@ -7,34 +7,27 @@ import Librarian from "./components/Librarian/Librarian";
 import "./index.css";
 import AddBook from "./components/Books/AddBook";
 import LoginPage from "./components/Login/LoginPage";
+import Navbar from "./components/Navbar/Navbar";
+import Register from "./components/Login/Register";
 
 
 const App = () => {
 
-
+  const userRole = localStorage.getItem("role");
+ console.log(userRole);
   return (
     <>
-    {/* <div>
-      <LoginPage/>
-    </div> */}
-    
     <Router>
-      <div className="container" >
-        <h1>Library Management System</h1>
-        <nav>
-          <Link to="/books"> Home</Link> | 
-          <Link to="/addBook"> Add Book</Link> | 
-          <Link to="/members"> Members</Link> | 
-          <Link to="/borrow"> Borrow</Link> | 
-          <Link to="/librarian"> Librarian</Link>
-        </nav>
 
+    <Navbar/>
+      <div className="container" >
         <Routes>
+          <Route path="/"  element={<LoginPage/>}/>
           <Route path="/books" element={<Books />} />
           <Route path="/members" element={<Members />} />
-          <Route path="/borrow" element={<Borrow />} />
           <Route path="/addBook" element={<AddBook />} />
-          <Route path="/librarian" element={<Librarian />} />
+          <Route path="/librarian" element={ userRole === "Librarian" ? <Librarian /> : <LoginPage />} />
+          <Route path="/register"  element={<Register/>} />
         </Routes>
       </div>
     </Router>

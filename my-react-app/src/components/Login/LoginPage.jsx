@@ -1,11 +1,12 @@
-
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-//import jwtDecode from "jwt-decode";
 import "./login.css"; 
  
 const LoginPage = () => {
+
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -16,21 +17,28 @@ const LoginPage = () => {
  
     try {
       const response = await axios.post("https://localhost:7247/auth/login", { username, password });
-      const { token } = response.data;
-      
+
+      const  token  = response.data.token;
+
       localStorage.setItem("token", token);
 
-      const decodedToken = jwtDecode(token);
-      const userRole = decodedToken.role; 
+      const decodedToken = JSON.parse(atob(token.split(".")[1]));
+      console.log(decodedToken);
+      const userRole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      console.log(userRole);
 
-    //   if (userRole === "Librarian") {
-    //     navigate("/librarian-dashboard");
-    //   } else if (userRole === "Member") {
-    //     navigate("/member-dashboard");
-    //   } else {
-    //     setError("Invalid role.");
-    //   }
-    } catch (err) {
+      localStorage.setItem("role", userRole);
+
+      if (userRole === "Librarian") {
+        navigate("/librarian"); 
+      } 
+      else if (userRole === "Member") {
+        navigate("/books"); 
+      } else {
+        setError("Invalid role.");
+      }
+    } 
+    catch (err) {
       setError("Invalid credentials. Please try again.");
     }
   };
@@ -55,6 +63,11 @@ const LoginPage = () => {
           required
         />
         <button type="submit">Login</button>
+
+        <p>
+          Don't have an account? <a href="/register">Sign Up</a>
+        </p>
+
       </form>
     </div>
   );
